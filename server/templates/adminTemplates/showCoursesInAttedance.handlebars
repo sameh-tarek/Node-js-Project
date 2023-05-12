@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Courses</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+      .back-btn {
+        background-color: #007bff; /* Change button color to blue */
+        border-color: #007bff;
+      }
+      .back-btn:hover {
+        background-color: #0069d9; /* Change button color on hover */
+        border-color: #0062cc;
+      }
+      .back-btn:focus {
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+      }
+      .back-btn:active {
+        background-color: #0062cc; /* Change button color on click */
+        border-color: #005cbf;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="my-4">{{course.course_name}}</h1>
+      
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Course details</h5>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><strong>Code:</strong> {{course.course_code}}</li>
+            <li class="list-group-item"><strong>Department:</strong> {{course.department_id}}</li>
+            <li class="list-group-item"><strong>Required course:</strong> {{course.requre_course}}</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="my-4">
+        <a href="/attedance" class="btn btn-primary back-btn">Back to Courses</a>
+      </div>
+      
+    </div>
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  </body>
+</html>
