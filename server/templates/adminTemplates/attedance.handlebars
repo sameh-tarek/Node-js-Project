@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Courses</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+      .course-item {
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="my-4">Courses</h1>
+      <div class="row">
+        {{#each courses}}
+        <div class="col-md-6">
+          <div class="course-item card">
+            <div class="card-body">
+              <a href="/attedance/{{_id}}">
+                <h2 class="card-title">{{course_name}}</h2>
+              </a>
+              <p class="card-text">{{department_id}}</p>
+              <a href="/attedance/{{this.course_code}}/AttedanceOfSubject" class="btn btn-primary">View Attendance</a>
+            </div>
+          </div>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  </body>
+</html>
