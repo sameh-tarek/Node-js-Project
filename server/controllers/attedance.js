@@ -1,5 +1,6 @@
 import Course from "../database/models/courses_model.js";
 import Student from "../database/models/student_model.js";
+import department from "../database/models/departments_model.js";
 
 export const index = async (req,res)=>{
     
@@ -16,9 +17,15 @@ export const show = async(req,res)=>{
     //2- use the _id to get the subject
     const singleCourse =await Course.findById(_id).lean();
     console.log(singleCourse);
+    // fetch dapartmentName
+    const depId=singleCourse.department_id;
+    console.log(depId);
+    const departmentN = await department.findOne({ _id: depId }).select('department_name');
+    const departmentName=departmentN.department_name;
+    console.log(departmentName);
     
     //3- rener "show" View
-    res.render('adminTemplates/showCoursesInAttedance', {course:singleCourse} );
+    res.render('adminTemplates/showCoursesInAttedance', {course:singleCourse , departmentName} );
     
 }
 
