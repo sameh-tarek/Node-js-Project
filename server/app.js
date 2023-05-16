@@ -1,6 +1,6 @@
 import express from "express";
-import { engine } from 'express-handlebars';
 
+import { engine } from 'express-handlebars';
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -9,6 +9,10 @@ import doctorrouts from "./routs/doctorRouts/doctor-routs.js"
 import studentrouts from "./routs/studentRouts/student-routs.js"
 import loginrouts from "./routs/login-routs.js"
 import attedancerouts from "./routs/adminRouts/attendance.js"
+import departmensRoutes from "./routs/adminRouts/adminAddDepart.js"
+import coursesRoutes from "./routs/adminRouts/adminAddCourse.js"
+import adminHomePage from "./routs/adminRouts/adminHomePage.js"
+
 
 
 const app = express();
@@ -37,13 +41,15 @@ app.post('/log', (req, res) => {
 });
 
 //routing
+
 app.use("/login",loginrouts);
 app.use("/admin",adminrouts);
 app.use("/doctor",doctorrouts);
 app.use("/student",studentrouts);
 app.use("/attedance",attedancerouts);
-
-
+app.use("/departments",departmensRoutes);
+app.use("/courses",coursesRoutes);
+app.use("/adminHomePage",adminHomePage);
 
 
 app.listen(process.env.Port,()=>{

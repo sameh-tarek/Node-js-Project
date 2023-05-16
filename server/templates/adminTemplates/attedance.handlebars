@@ -1,12 +1,25 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Courses</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <style>
       .course-item {
         margin-bottom: 20px;
+      }
+      
+      .btn-primary.custom {
+        background-color: #004085;
+        color: #fff;
+        padding: 10px 20px;
+        margin-top: 20px;
+      }
+      
+      .btn-primary.custom:hover {
+        background-color: #0069d9;
       }
     </style>
   </head>
@@ -22,11 +35,16 @@
                 <h2 class="card-title">{{course_name}}</h2>
               </a>
               <p class="card-text">{{department_id}}</p>
-              <a href="/attedance/{{this.course_code}}/AttedanceOfSubject" class="btn btn-primary">View Attendance</a>
+              <a href="/attedance/{{this.course_code}}/AttedanceOfSubject" class="btn btn-primary mr-2">View Attendance</a>
             </div>
           </div>
         </div>
         {{/each}}
+      </div>
+      <div class="row">
+        <div class="col-md-12 d-flex justify-content-center">
+          <a href="/courses" class="btn btn-primary custom">Add courses</a>
+        </div>
       </div>
     </div>
     
