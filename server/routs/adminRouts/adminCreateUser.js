@@ -4,7 +4,7 @@ import { validateInput } from "../../middleware/validateUserCreation.js";
 const router = new Router();
 
 router.get("/",(req,res)=>{
-    res.render("adminTemplates/adminHomePage",{layout : false});
+    res.render("adminTemplates/adminCreateUser",{layout : false});
    
 })
 

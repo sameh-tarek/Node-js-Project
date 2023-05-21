@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+	<style>
+		body{background-color: rgb(151, 197, 250);}
+	</style>
+	</head>
+
+<body >
+		<div class="container" style=" display: flex;justify-content: center;align-items: center;height: 100vh; ">
+			<div class="section-1" style="padding: 20px; border: 1px solid #ccc; border-radius: 5px; background-color: white;" />
+				<form action="/admin/createUser" method="post" id="myForm">
+					<label for="first_name">First Name:</label>
+					<input type="text" id="first_name" name="first_name" required>
+		  
+					<label for="last_name">Last Name:</label>
+					<input type="text" id="last_name" name="last_name" required>
+
+					<label for="password">Password:</label>
+					<input type="password" id="password" name="password" required>
+
+					<div>
+						<label for="user_type">User Type:</label> <br/>
+						<input type="radio" id="doctor" name="user_type" value="doctor" required>
+						<label for="doctor">Doctor</label><br>
+						<input type="radio" id="student" name="user_type" value="student" required>
+						<label for="student">Student</label><br>
+						<input type="radio" id="admin" name="user_type" value="admin" required>
+						<label for="student">Admin</label><br>						
+					</div>
+
+                    <label for="user_code">User Code:</label>
+					<input type="text" id="user_code" name="user_code" required>
+		  
+					<input type="submit">
+				</form>  
+				<div style="color: red">{{message}}</div>
+			</div>
+		    
+		</div>
+	
+</body>
+</html>
