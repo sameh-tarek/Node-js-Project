@@ -16,9 +16,7 @@ export const store=(req,res)=>{
     const name=req.body.name;
     const code=req.body.code;
     const department=req.body.department;
-    const requre_course=req.body.requre_course;
-
-
+    const requre_course=req.body.require_course;
 
     courses_model.create({
         course_name : name,
