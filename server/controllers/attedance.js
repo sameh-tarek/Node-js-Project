@@ -23,9 +23,14 @@ export const show = async(req,res)=>{
     const departmentN = await department.findOne({ _id: depId }).select('department_name');
     const departmentName=departmentN.department_name;
     console.log(departmentName);
+
+    //fectch require Course Name with code
+    const rCourseCode = singleCourse.requre_course;
+    const rCourseName = await Course.findOne({course_code : rCourseCode}).select('course_name');
+    const requireCourseName = rCourseName ? rCourseName.course_name : "no require";
     
     //3- rener "show" View
-    res.render('adminTemplates/showCoursesInAttedance', {course:singleCourse , departmentName} );
+    res.render('adminTemplates/showCoursesInAttedance', {course:singleCourse , departmentName , requireCourseName} );
     
 }
 
@@ -41,13 +46,13 @@ export const showAbsent = async(req,res)=>{
   console.log(CourseName);
 
   // use CourseCode to get students name and academic number 
-  const students = await Student.find({ courses_id: courseCode }).select('student_name student_academic_number');
+  const students = await Student.find({ course_code: courseCode }).select('student_name student_id');
   const attendance = students.map(student => ({ 
     student_name: student.student_name,
-    student_academic_number: student.student_academic_number,
+    student_id: student.student_id,
     absent: false // default value for absent checkbox
   }));
-
+console.log (students);
   //3- rener "show" View
   res.render('adminTemplates/showAttedanceBySubjectCode', { CourseName, attendance} );
   
