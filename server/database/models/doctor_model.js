@@ -14,6 +14,10 @@ courses_id:{
     type: [String],
     required:true
 }
+,doctor_id:{
+    type :String,
+    required:true
+}
 });
 
 
