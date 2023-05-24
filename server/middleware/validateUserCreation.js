@@ -9,7 +9,7 @@ export const validateInput = (req, res, next) => {
   User.findOne({ user_code }).lean()
     .then(userExists => {
       if (userExists) {
-        return res.render("adminTemplates/adminCreateUser", { message: "Creation is invalid. User with this code already exists." });
+        return res.render("adminTemplates/adminCreateUser", { message: "Creation is invalid. User with this code already exists.",color:"red" });
       }
 
       // regular expression to match first_name and last_name fields with only 'a' to 'z'
@@ -18,10 +18,10 @@ export const validateInput = (req, res, next) => {
 
       // check if first_name and last_name only contain valid characters
       if (!nameRegex.test(first_name) || !nameRegex.test(last_name)) {
-        return res.render("adminTemplates/adminCreateUser", { message: "Invalid character in first or last name." });
+        return res.render("adminTemplates/adminCreateUser", { message: "Invalid character in first or last name.",color:"red" });
       }
       if(!usrCodeRegex.test(user_code)){
-        return res.render("adminTemplates/adminCreateUser", { message: "Invalid character in user code." });
+        return res.render("adminTemplates/adminCreateUser", { message: "Invalid character in user code.",color:"red" });
       }
 
       // if all validations passed, call create user controller

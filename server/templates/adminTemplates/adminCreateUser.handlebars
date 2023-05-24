@@ -6,42 +6,171 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
 	<style>
-		body{background-color: rgb(151, 197, 250);}
+		body {
+			background-color: #f0f2f5;
+			font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+		}
+		.section-1 {
+			 background-color: #fff;
+            border-radius: 0 0 8px 8px;
+			border-top: 1px solid #dadde1;
+			box-sizing: border-box;
+			padding: 16px;
+			position: relative;
+            width: 432px;
+		}
+		#first_name,#last_name{
+			width: 170px;
+		}
+		label {
+			color: #1877f2;
+		}
+		
+		input[type="text"], input[type="password"], input[type="radio"] {
+			border:1px solid #dddfe2;
+			border-radius: 5px;
+            box-sizing: border-box;
+			padding: 14px 16px;
+			font-size: 15px;
+			line-height: 16px;
+            margin-bottom: 20px;
+            width: 336px;
+
+    	
+		}
+		input[type="text"]:focus, input[type="password"]:focus {
+			outline: none;
+			background-color: #fff;
+		}
+		input[type="submit"] {
+			background-color: #007bff; 
+			color: white; 
+			border: none; 
+			padding: 10px 20px; 
+			cursor: pointer;
+		}
+		input[type="submit"]:hover {
+			background-color: #0069d9;
+		}
+
+		.container {
+			display: flex; 
+			justify-content: center; 
+			align-items: center; 
+			height: 100vh;
+		}
+		.radio label {
+    display: block;
+    margin-bottom: 10px;
+}
+		.radio {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -8px -6px -6px;
+    width: 411px;
+}
+.radio input[type="radio"] {
+  display: inline-block;
+  margin-right: 10px;
+}
+.radio label {
+    display: block;
+    margin-bottom: 10px;
+}
+#admin, #doctor, #student {
+    box-sizing: border-box;
+    color: #1c1e21;
+    display: inline-block;
+    font-size: 15px;
+    line-height: 36px;
+    padding: 0 28px 0 10px;
+    width: 100%;
+    vertical-align: middle;
+}
+        
+		/*night mood*/
+		body.night-mode {
+			background-color:#222;
+			 color: white;
+		}
+		.section-1.night-mode {
+			background-color: #333; 
+			border-color: #666; 
+			color: white;
+		}
+		label.night-mode {
+			color: #ddd;
+		}
+		input[type="text"].night-mode, input[type="password"].night-mode, input[type="radio"].night-mode {
+			background-color: #444; 
+			color: white;
+		}
+		input[type="text"].night-mode:focus, input[type="password"].night-mode:focus {
+			background-color: #555;
+		}
+		input[type="submit"].night-mode {
+			background-color: #444; 
+			color: white;
+		}
+		input[type="submit"].night-mode:hover {
+			background-color: #333;
+		}
+		.toggle-night-mode {
+			position: fixed; 
+			top: 10px; 
+			right: 10px; 
+			padding: 10px; 
+			background-color: #007bff; 
+			color: white; 
+			border: none; 
+			cursor: pointer;
+		}
+        .toggle-night-mode:hover {
+			background-color: #0069d9;
+		}
 	</style>
-	</head>
+</head>
 
-<body >
-		<div class="container" style=" display: flex;justify-content: center;align-items: center;height: 100vh; ">
-			<div class="section-1" style="padding: 20px; border: 1px solid #ccc; border-radius: 5px; background-color: white;" />
-				<form action="/admin/createUser" method="post" id="myForm">
-					<label for="first_name">First Name:</label>
-					<input type="text" id="first_name" name="first_name" required>
+<body>
+    <button class="toggle-night-mode" onclick="toggleNightMode()">Toggle Night Mode</button>
+    
+	<div class="container">
+		<div class="section-1">
+			<form action="/admin/createUser" method="post" id="myForm">
+				<input type="text" id="first_name" name="first_name" placeholder="First Name" required>
 		  
-					<label for="last_name">Last Name:</label>
-					<input type="text" id="last_name" name="last_name" required>
+				<input type="text" id="last_name" name="last_name" placeholder="Last Name" required><br>
 
-					<label for="password">Password:</label>
-					<input type="password" id="password" name="password" required>
+				<input type="text" id="user_code" name="user_code" placeholder="User Code" required> <br>
 
-					<div>
-						<label for="user_type">User Type:</label> <br/>
-						<input type="radio" id="doctor" name="user_type" value="doctor" required>
-						<label for="doctor">Doctor</label><br>
-						<input type="radio" id="student" name="user_type" value="student" required>
-						<label for="student">Student</label><br>
-						<input type="radio" id="admin" name="user_type" value="admin" required>
-						<label for="student">Admin</label><br>						
-					</div>
 
-                    <label for="user_code">User Code:</label>
-					<input type="text" id="user_code" name="user_code" required>
+				<input type="password" id="password" name="password" placeholder="Password" required><br>
+
+				<div class="radio">
+					<label for="user_type">User Type:</label> <br/>
+					<input type="radio" id="doctor" name="user_type" value="doctor" required>
+					<label for="doctor">Doctor</label>
+					<input type="radio" id="student" name="user_type" value="student" required>
+					<label for="student">Student</label>
+					<input type="radio" id="admin" name="user_type" value="admin" required>
+					<label for="admin">Admin</label>						
+				</div>
+
+                
 		  
-					<input type="submit">
-				</form>  
-				<div style="color: red">{{message}}</div>
-			</div>
-		    
+				<input type="submit">
+			</form>  
+			<div style="color: {{color}}">{{message}}</div>
 		</div>
-	
+	</div>
+
+	<script>
+		const toggleNightMode = () => {
+			document.body.classList.toggle('night-mode');
+			document.querySelectorAll('.section-1, label, input[type="text"], input[type="password"], input[type="radio"], input[type="submit"]').forEach(element => element.classList.toggle('night-mode'));
+		}
+	</script>
 </body>
 </html>
