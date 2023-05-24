@@ -48,6 +48,7 @@ app.post('/log', (req, res) => {
 app.use("/login",loginrouts);
 app.use("/admin",adminrouts);
 app.use("/doctor",doctorrouts);
+
 app.use("/student",studentrouts);
 app.use("/attedance",attedancerouts);
 app.use("/departments",departmensRoutes);
