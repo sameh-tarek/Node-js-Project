@@ -11,7 +11,7 @@
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/Second.css">
-    <title>Document</title>
+    <title>Upload files</title>
     <style> 
         body {
             background-color: rgb(235, 234, 234);
@@ -81,7 +81,7 @@
         </div>
     </nav>
     <h1>Upload File</h1>
-    <form action="/uploadfiles" method="post" enctype="multipart/form-data"  >
+    <form action="/doctor/uploadfiles" method="post" enctype="multipart/form-data"  >
         <label for="doctor_id" style="font-size: large;">Doctor_id: </label>
         <input type="text" id="doctor_id" name="doctor_id" value="{{doctorId}}"  style="border-radius: 20px;" readonly required>
         <br>
