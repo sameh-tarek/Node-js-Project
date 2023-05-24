@@ -25,16 +25,15 @@
     </style>
 </head>
 <body>
-    <h2>welcome in students page</h2>
+    <h1>{{subject.course_name}}</h1>
 
-    <br>
-    <div class="contain">
-        <h4><a href="/student/AvailableCourses">Courses Available</a></h4>
-    </div>
-
-
-    <div class="contain">
-        <h4><a href="/student/studentCourses">My Courses</a></h4>
-    </div>
+    {{#each materials}}
+        <div class="contain">
+            <h2>
+                <a href="/student/studentCourses/{{course_code}}/{{file_name}}" >{{file_name}}</a>
+            </h2>
+        </div>
+    {{/each}}
+</div>
 </body>
 </html>
