@@ -5,14 +5,18 @@ import dotenv from "dotenv";
 dotenv.config();
 
 import adminrouts from "./routs/adminRouts/adminCreateUser.js"
-import doctorrouts from "./routs/doctorRouts/doctor-routs.js"
 import studentrouts from "./routs/studentRouts/student-routs.js"
 import loginrouts from "./routs/login-routs.js"
 import attedancerouts from "./routs/adminRouts/attendance.js"
 import departmensRoutes from "./routs/adminRouts/adminAddDepart.js"
 import coursesRoutes from "./routs/adminRouts/adminAddCourse.js"
 import adminHomePage from "./routs/adminRouts/adminHomePage.js"
+import doctorUpload from "./routs/doctorRouts/doctorUploadFile.js";
+import doctorrouts from "./routs/doctorRouts/doctor-routs.js"
 
+
+// files upload
+import { fileUpload, upload } from "./controllers/uploadFile.js";
 
 
 const app = express();
@@ -40,6 +44,12 @@ app.post('/log', (req, res) => {
 
 });
 
+
+// upload files 
+app.post('/uploadfiles', upload.single('file'), fileUpload);
+
+
+
 //routing
 
 app.use("/login",loginrouts);
@@ -50,6 +60,10 @@ app.use("/attedance",attedancerouts);
 app.use("/departments",departmensRoutes);
 app.use("/courses",coursesRoutes);
 app.use("/adminHomePage",adminHomePage);
+app.use("/doctorupload", doctorUpload);
+
+
+
 
 
 app.listen(process.env.Port,()=>{

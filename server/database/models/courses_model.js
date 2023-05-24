@@ -1,7 +1,7 @@
 import { Schema ,model} from "mongoose";
 
 const courses_schama = new Schema({
-course_name:{ 
+  course_name:{ 
     type: String,
     required:true
 },
@@ -15,8 +15,12 @@ department_id:{
     required:true
 },
 requre_course:{
-    type: [String],
-    required:false
+    type:[String],
+    required:true
+},
+doctor_id:{
+    type:String,
+    required:true
 }
 });
 
