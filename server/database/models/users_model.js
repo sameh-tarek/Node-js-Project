@@ -17,6 +17,10 @@ const userSchema = new Schema({
   user_type: {
     type: String,
     required: true
+  },
+  user_code:{
+    type: String,
+    required: true
   }
 });
 

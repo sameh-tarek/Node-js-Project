@@ -26,3 +26,4 @@ doctor_id:{
 
 
 export default model("courses",courses_schama);
+

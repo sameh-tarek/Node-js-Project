@@ -2,31 +2,172 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
-    {{!-- <link rel="stylesheet" href="style.css"> --}}
+    <style>
+        body {
+            background-color: #f0f2f5;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        .section-1 {
+            background-color: #fff;
+            border-radius: 10px;
+            border: none;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            text-align: center;
+            width: 396px;
+            margin: 0px 100px 50px 0px;
+            
+        }
+
+        /* Add styles for welcome block */
+        .welcome-block {
+              padding: 30px;
+            width: 400px; 
+            margin-bottom: 100px;
+        }
+        
+        h1 , h2{
+            color: #1877f2;
+        }
+
+        
+        input[type="text"], input[type="password"] {
+            border:1px solid #dddfe2;
+            box-sizing: border-box;
+            border-radius: 5px;
+            font-size: 16px;
+            border-color: #dddfe2;
+            margin-bottom: 20px;
+            padding: 14px 16px;
+            width: 336px;
+        
+           
+        }
+        
+        input[type="text"]::placeholder,
+        input[type="password"]::placeholder {
+            color: #bbb;
+        }
+        
+        input[type="submit"] {
+            background-color: #1877f2;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            font-size: 18px;
+            padding: 14px 16px;
+            width: 336px;
+        }
+        
+        input[type="submit"]:hover {
+            background-color: #146ee4;
+        }
+        
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 10px;
+            padding-left: 30px;
+            text-align: left;
+
+        }
+        .horizontal-line{
+          border-bottom:1px solid #dddfe2;
+          align-items: center;
+          display: flex;
+          margin: 20px 16px;
+          text-align: center;
+        }
+        
+        /* Add styles for dark mode */
+        .dark-mode {
+            background-color: #222;
+            color: #272727;
+        }
+        
+        .dark-mode .toggle-button {
+            background-color: #fff;
+            color: #1877f2;
+        }
+        
+        
+        .dark-mode .section-1{
+            background-color: #333;
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            text-align: center;
+            width: 400px;
+        
+        }
+        .dark-mode h1, .dark-mode h2 , .dark-mode p{
+          color: #ddd;
+        }
+ 
+        /* Add styles for toggle button */
+        .toggle-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #1877f2;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            padding: 10px;
+        }
+    </style>
 </head>
 
+<body>
+    <div class="container">
+        <!-- Add welcome block to the left of the form -->
+        <div class="welcome-block">
+            <h2>FCI</h2>
+            <p>Menofia uneversity welcomes you</p>
+        </div>
+        
+        <div class="section-1">
+            <form action="/login" method="post" id="myForm">
+              
+                <input type="text" id="user_code" name="user_code" placeholder="User Code" required />
+  
+                <input type="password" id="password" name="password" placeholder="Password" required />
+                  
+                <input type="submit" value="Login">
 
-	<div class="container">
-  <div class="section-1">
-    <form action="/login" method="post">
-      <label for="first_name">First Name:</label>
-      <input type="text" id="first_name" name="first_name">
-      
-      <label for="password">Password:</label>
-      <input type="password" id="password" name="password">
-      
-      <input type="submit">
-    </form>  
-  </div>
-  <div class="section-2">
-    
-  </div>
-</div>
+                            <div style="color: {{color}};">{{message}}</div> 
 
+                <div class="horizontal-line"></div>
 
+              <p>If you don't have an accoutn?</p>
 
+                <p>ask IT to make you an account</p>
+            </form>
+                  
+        </div>
+    </div>
+
+    <button class="toggle-button" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+
+    <script>
+        function toggleDarkMode() {
+            const body = document.querySelector('body');
+            body.classList.toggle('dark-mode');
+        }
+    </script>
 </body>
 </html>
