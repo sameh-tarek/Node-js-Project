@@ -85,11 +85,7 @@ a:hover{
 
   <h1>Available Courses</h1>
   <br><br>
-  <form action="/doctor" method="post" class="formCourses" style="padding-bottom: 30px;" >
-    <label for="doctor_id" id="ids">Your ID </label>
-    <input type="text" id="doctor_id" name="doctor_id" required style="border-radius: 20px;">
-    <input type="submit" value="Search" style="background-color: rgb(186, 192, 199); margin-left: 20px;">
-  </form>
+
   <table>
     <tr>
       <th>Course code</th>
@@ -99,7 +95,7 @@ a:hover{
     </tr>
     {{#each courses}}
     {{let cnt=1}} <tr>
-      <td><a href="doctor/uploadfiles?course_code={{this.course_code}}"style="text-decoration:none; font-size:26px;">{{this.course_code}}</a></td>
+      <td><a href="doctor/uploadfiles?course_code={{this.course_code}}&id={{this.doctor_id}}"style="text-decoration:none; font-size:26px;">{{this.course_code}}</a></td>
       <td>
         {{this.course_name}}</td>
       <td>{{this.department_id}}</td>
