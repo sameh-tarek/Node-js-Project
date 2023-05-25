@@ -16,14 +16,11 @@ department_id:{
 },
 requre_course:{
     type:[String],
-    required:true
+    required:false
 },
 doctor_id:{
     type:String,
     required:true
 }
 });
-
-
 export default model("courses",courses_schama);
-
