@@ -1,6 +1,7 @@
 import courseModel from "../database/models/courses_model.js";
 import studentModel from '../database/models/student_model.js';
 import fileModel from '../database/models/files_model.js';
+import sucessCoursesModel from '../database/models/success_courses_model.js'
 import fs from 'fs';
 
 export const index = (req,res)=>{
@@ -8,13 +9,13 @@ export const index = (req,res)=>{
 };
 
 export const showStudentCourses = async(req, res)=>{
-    const student_id = '200327';
+    const user_code = '200327';
     try{
-        const student = await studentModel.findOne({student_id}).lean();
-        const course_codes = student.course_code;
+        const student = await studentModel.findOne({user_code}).lean();
+        const course_codes = student.courses_id;
         
-        const courses = await courseModel.find({ course_code: { $in: course_codes } }).lean();
-        const course_data = courses.map(course => ({ name: course.course_name, code: course.course_code }));
+        const courses = await courseModel.find({ courses_id: { $in: course_codes } }).lean();
+        const course_data = courses.map(course => ({ name: course.course_name, code: course.courses_id }));
         res.render('studentTemplates/studentCourses', {course_data});
     }catch (error) {
         console.error(error);
@@ -25,9 +26,9 @@ export const showStudentCourses = async(req, res)=>{
 export const showCourseDetails = async(req,res)=>{
     const {course_code} = req.params;
     try{
-        const singleSubject = await courseModel.findOne({course_code}).lean();
+        const singleSubject = await courseModel.findOne({courses_id: course_code}).lean();
 
-        const subjectFiles = await fileModel.find({course_code:{$eq: singleSubject.course_code} }).lean();
+        const subjectFiles = await fileModel.find({course_code:{$eq: singleSubject.courses_id} }).lean();
         res.render('studentTemplates/courseDetails', {subject : singleSubject , materials : subjectFiles});
     }catch (error) {
         console.error(error);
@@ -37,7 +38,6 @@ export const showCourseDetails = async(req,res)=>{
 
 export const showFiles = async(req, res)=>{
     const {course_code} = req.params;
-    // console.log(course_code);
     try{
         const {file_name} = req.params;
         const file = await fileModel.findOne({course_code, file_name}).lean();
@@ -56,3 +56,10 @@ export const showFiles = async(req, res)=>{
       }
 };
 
+export const showAvailableCourses = async (req, res) => {
+    res.send("availableCourses");
+};
+
+export const enrollCourse = async (req, res) => {
+    
+};
