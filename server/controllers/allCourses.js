@@ -32,10 +32,7 @@ export const store = (req, res) => {
 
 export const show=async(req,res)=>{
      const {code}=req.params;
-
      const mycourse= await courses_model.findById(code).populate('department_id').lean();
      console.log(mycourse);
-
      res.render("adminTemplates/course_info.handlebars",{mycourse})
-
 }

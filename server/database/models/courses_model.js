@@ -23,7 +23,4 @@ doctor_id:{
     required:true
 }
 });
-
-
 export default model("courses",courses_schama);
-
