@@ -42,7 +42,6 @@ app.post('/log', (req, res) => {
 
 
 
-
 //routing
 
 app.use("/login",loginrouts);
