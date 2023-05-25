@@ -41,15 +41,10 @@ export const showAbsent = async(req,res)=>{
   console.log(courseCode);
 
   //select course name with code 
-  const courseName = await Course.findOne({ course_code: courseCode }).select('course_name');
-  const CourseName= courseName.course_name;
-  console.log(CourseName);
-
-  // use CourseCode to get students name and academic number 
-  const students = await Student.find({ course_code: courseCode }).select('student_name student_id');
+  const students = await Student.find({ courses_id: courseCode }).select('first_name last_name user_code');
   const attendance = students.map(student => ({ 
-    student_name: student.student_name,
-    student_id: student.student_id,
+    student_name: `${student.first_name} ${student.last_name}`,
+    student_id: student.user_code,
     absent: false // default value for absent checkbox
   }));
 console.log (students);
