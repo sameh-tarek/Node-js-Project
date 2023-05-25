@@ -11,22 +11,24 @@ export const allCourses=async(req,res)=>{
 }
 
 
-export const store=(req,res)=>{
+export const store = (req, res) => {
     console.log(req.body);
-    const name=req.body.name;
-    const code=req.body.code;
-    const department=req.body.department;
-    const requre_course=req.body.require_course;
+    const name = req.body.name;
+    const code = req.body.code;
+    const department = req.body.department;
+    const require_course = req.body.require_course;
+    const doctor_id = req.body.doctor_id; // retrieve the doctor ID from the request body
 
     courses_model.create({
-        course_name : name,
-        course_code : code,
-        department_id : department,
-        requre_course : requre_course
+        course_name: name,
+        course_code: code,
+        department_id: department,
+        require_course: require_course,
+        doctor_id: doctor_id // include the doctor ID in the create method
     });
 
     res.redirect("/courses");
-}
+};
 
 export const show=async(req,res)=>{
      const {code}=req.params;
