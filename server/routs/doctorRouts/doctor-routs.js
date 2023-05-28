@@ -15,11 +15,11 @@ router.get("/",(req,res)=>{
 router.post('/uploadfiles', upload.single('file'), fileUpload);
 
 router.get("/uploadfiles", (req, res) => {
-    const doctorId = req.query.id;
-    const courseCode = req.query.course_code;
-    console.log(doctorId)
-    console.log(courseCode);
-    res.render('doctorTemplates/doctorUploadFile', { courseCode, doctorId });
+    const doctor_id = req.query.id;
+    const course_code = req.query.course_code;
+    console.log(doctor_id)
+    console.log(course_code);
+    res.render('doctorTemplates/doctorUploadFile', { course_code, doctor_id });
 })
 
 router.get('/uploadfiles',fileUpload)
