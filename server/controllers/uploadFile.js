@@ -35,7 +35,7 @@ export const fileUpload = async (req, res) => {
         };
 
         await files_model.create(fileData);
-res.render("doctorTemplates/doctorUploadFile",{message:"file uploaded successfully"});
+res.render("doctorTemplates/doctorUploadFile",{message:"file uploaded successfully",doctor_id,course_code});
     } catch (error) {
         console.log(error);
         res.status(500).send({ message: "An error occurred, go and check your uploaded files" });
